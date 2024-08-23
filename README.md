@@ -12,7 +12,7 @@ A starter kit for building AI applications using Neon as a vector database.
 
 1. **Clone the repository:**
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/imabutahersiddik/AI-Application-Starter-Kit.git
    cd ai-starter-kit
    ```
 
