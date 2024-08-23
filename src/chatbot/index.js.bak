@@ -1,0 +1,34 @@
+// src/chatbot/index.js
+const express = require('express');
+const bodyParser = require('body-parser');
+const { getResponse } = require('./chatbotService');
+const { semanticSearch } = require('../semanticSearch/searchService');
+
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+app.use(bodyParser.json());
+
+app.post('/chat', async (req, res) => {
+    try {
+        const response = await getResponse(req.body.input);
+        res.json({ response });
+    } catch (error) {
+        console.error('Error in /chat endpoint:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
+
+app.post('/search', async (req, res) => {
+    try {
+        const results = await semanticSearch(req.body.query);
+        res.json({ results });
+    } catch (error) {
+        console.error('Error in /search endpoint:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
+
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+});
