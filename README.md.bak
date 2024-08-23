@@ -99,6 +99,7 @@ These commands will allow you to test your API endpoints from the command line u
 ## Optimization Tips
 - Use indexing on vector columns for faster searches.
 - Monitor performance and scale your database as needed.
+```
 
 ### **Final Steps**
 1. Ensure your PostgreSQL database is set up with the necessary tables (`chatbot_responses` and `documents`) and that the `pgvector` extension is installed.
